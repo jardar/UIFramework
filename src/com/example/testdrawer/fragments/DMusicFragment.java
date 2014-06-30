@@ -154,22 +154,8 @@ public class DMusicFragment extends Fragment implements DIFragment,
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
 		Log.i(TAG, "***1.onAttach");
-		// ((MainActivity)
-		// activity).onSectionAttached(getArguments().getInt(
-		// ARG_SECTION_NUMBER));
 	}
 
-	// @Override
-	// public void restoreActionBar() {
-	// // TODO Auto-generated method stub
-	//
-	// }
-
-	// @Override
-	// public int getMenuResouceId() {
-	// // TODO Auto-generated method stub
-	// return R.menu.main;
-	// }
 
 	@Override
 	public void onFinishEditDialog(String inputText) {

@@ -57,7 +57,6 @@ public class DFragment extends Fragment implements DIFragment,
 	@Override
 	public void onResume() {
 		Log.i(TAG, "***6.onResume");
-		((DIFController) getActivity()).onFragmentResume(this);
 		super.onResume();
 	}
 
@@ -155,22 +154,8 @@ public class DFragment extends Fragment implements DIFragment,
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
 		Log.i(TAG, "***1.onAttach");
-		// ((MainActivity)
-		// activity).onSectionAttached(getArguments().getInt(
-		// ARG_SECTION_NUMBER));
 	}
 
-	// @Override
-	// public void restoreActionBar() {
-	// // TODO Auto-generated method stub
-	//
-	// }
-
-	// @Override
-	// public int getMenuResouceId() {
-	// // TODO Auto-generated method stub
-	// return R.menu.main;
-	// }
 
 	@Override
 	public void onFinishEditDialog(String inputText) {
@@ -181,7 +166,6 @@ public class DFragment extends Fragment implements DIFragment,
 
 	@Override
 	public boolean onOptionsItemSelected(int menuItemId) {
-		// TODO Auto-generated method stub
 		if (menuItemId == R.id.action_example) {
 			showEditDialog();
 			return true;

@@ -16,7 +16,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.testdrawer.DIFController;
 import com.example.testdrawer.DIFragment;
 import com.example.testdrawer.R;
 
@@ -44,7 +43,6 @@ public class DPagerFragment extends Fragment implements ActionBar.TabListener,
 		// TODO Auto-generated method stub
 		super.onResume();
 		Log.i(TAG, "***6.onResume");
-		((DIFController) getActivity()).onFragmentResume(this);
 	}
 
 	@Override
@@ -147,21 +145,6 @@ public class DPagerFragment extends Fragment implements ActionBar.TabListener,
 		super.onPause();
 	}
 
-	// @Override
-	// public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-	//
-	// inflater.inflate(R.menu.main, menu);
-	// showGlobalContextActionBar();
-	// super.onCreateOptionsMenu(menu, inflater);
-	// }
-	//
-	// private void showGlobalContextActionBar() {
-	// final ActionBar actionBar = getActivity().getActionBar();
-	// actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-	// actionBar.setDisplayShowTitleEnabled(true);
-	// actionBar.setTitle("tab frag");
-	//
-	// }
 
 	@Override
 	public void onTabSelected(Tab tab, FragmentTransaction ft) {
@@ -182,30 +165,9 @@ public class DPagerFragment extends Fragment implements ActionBar.TabListener,
 
 	}
 
-	// @Override
-	// public void restoreActionBar() {
-	// // TODO Auto-generated method stub
-	// ActionBar actionBar = getActivity().getActionBar();
-	//
-	// actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-	// actionBar.setDisplayShowTitleEnabled(true);
-	// actionBar.setTitle("Page Fragment");
-	// }
-	//
-	// @Override
-	// public int getMenuResouceId() {
-	// // TODO Auto-generated method stub
-	// return R.menu.pager;
-	//
-	// }
 
 	@Override
 	public boolean onOptionsItemSelected(int menuItemId) {
-		// TODO Auto-generated method stub
-		// if (menuItemId == R.id.action_example) {
-		//
-		// return true;
-		// }
 		if (menuItemId == R.id.action_example) {
 			Fragment frg = getCurrentFragment();
 			if (frg != null)
@@ -243,7 +205,6 @@ public class DPagerFragment extends Fragment implements ActionBar.TabListener,
 				return DMusicFragment.newInstance(100);
 
 			default:
-				// The other sections of the app are dummy placeholders.
 
 				return DMusicFragment.newInstance(i + 1);
 			}

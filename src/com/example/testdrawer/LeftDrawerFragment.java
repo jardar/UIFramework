@@ -23,13 +23,6 @@ import android.widget.Toast;
 
 import com.example.testdrawer.helper.DDrawerListener;
 
-/**
- * Fragment used for managing interactions for and presentation of a navigation
- * drawer. See the <a href=
- * "https://developer.android.com/design/patterns/navigation-drawer.html#Interaction"
- * > design guidelines</a> for a complete explanation of the behaviors
- * implemented here.
- */
 public class LeftDrawerFragment extends Fragment {
 
 	/**
@@ -168,15 +161,6 @@ public class LeftDrawerFragment extends Fragment {
 				&& mDrawerLayout.isDrawerOpen(mLeftDrawer_);
 	}
 
-	/**
-	 * Users of this fragment must call this method to set up the navigation
-	 * drawer interactions.
-	 * 
-	 * @param drawerId
-	 *            The android:id of this fragment in its activity's layout.
-	 * @param drawerLayout
-	 *            The DrawerLayout containing this fragment's UI.
-	 */
 	public void setUp(int drawerId, DrawerLayout drawerLayout) {
 		mLeftDrawer_ = getActivity().findViewById(drawerId);
 		mDrawerLayout = drawerLayout;

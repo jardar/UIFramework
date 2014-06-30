@@ -23,21 +23,12 @@ public class MainActivity extends FragmentActivity implements
 		LeftDrawerFragment.NavigationDrawerCallbacks, DIFController {
 
 	private static final String TAG = "MainActivity";
-	private int fragmentIdx = 0;
 	/**
 	 * Fragment managing the behaviors, interactions and presentation of the
 	 * navigation drawer.
 	 */
 	private LeftDrawerFragment mLeftDrawerFragment_;
 	private ImageView up;
-
-	private DIFragment mCurrentContentFragment_;
-	private int drawPostion;
-	/**
-	 * Used to store the last screen title. For use in
-	 * {@link #restoreActionBar()}.
-	 */
-	private CharSequence mTitle;
 
 	@Override
 	protected void onDestroy() {
@@ -83,7 +74,6 @@ public class MainActivity extends FragmentActivity implements
 
 		mLeftDrawerFragment_ = (LeftDrawerFragment) getFragmentManager()
 				.findFragmentById(R.id.navigation_drawer);
-		mTitle = getTitle();
 
 		// Set up the drawer.
 		mLeftDrawerFragment_.setUp(R.id.navigation_drawer,
@@ -93,36 +83,19 @@ public class MainActivity extends FragmentActivity implements
 	}
 
 	@Override
-	public void onFragmentResume(Fragment frg) {
-		// this.mCurrentContentFragment_ = (DIFragment) frg;
-		// invalidateOptionsMenu();
-	}
-
-	private String getFragmentIdxString() {
-		++fragmentIdx;
-		return "FRAGMENT:" + fragmentIdx;
-	}
-
-	@Override
 	public void onNavigationDrawerItemSelected(int position) {
 		Log.i(TAG, "***.444 Item Selected=" + position);
-		drawPostion = position;
 		// update the main content by replacing fragments
 		FragmentManager fragmentManager = getSupportFragmentManager();
 		fragmentManager.popBackStack(null,
 				FragmentManager.POP_BACK_STACK_INCLUSIVE);
 		Fragment fragment = null;
 		if (position == 1) {
-			// mCurrentContentFragment_ = null;
-			// mCurrentContentFragment_ = new DPagerFragment();
 			fragment = new DPagerFragment();
 
 		} else {
-			// mCurrentContentFragment_ = null;
-			// mCurrentContentFragment_ = DFragment.newInstance(position + 1);
 			fragment = DFragment.newInstance(position + 1);
 		}
-		// String frgTag = getFragmentIdxString();
 		fragmentManager.beginTransaction()
 				.replace(R.id.container, (Fragment) fragment)
 				.addToBackStack(null).commit();
@@ -144,6 +117,7 @@ public class MainActivity extends FragmentActivity implements
 						public void onClick(View v) {
 							Toast.makeText(MainActivity.this, "up clicked",
 									Toast.LENGTH_SHORT).show();
+							onBackPressed();
 						}
 					});
 				}
@@ -154,37 +128,10 @@ public class MainActivity extends FragmentActivity implements
 
 	}
 
-	// public void onSectionAttached(int number) {
-	// switch (number) {
-	// case 1:
-	// mTitle = getString(R.string.title_section1);
-	// break;
-	// case 2:
-	// mTitle = getString(R.string.title_section2);
-	// break;
-	// case 3:
-	// mTitle = getString(R.string.title_section3);
-	// break;
-	// }
-	// }
-
-	// public void restoreActionBar() {
-	// mCurrentContentFragment_.restoreActionBar();
-	//
-	// // ActionBar actionBar = getActionBar();
-	// // if (drawPostion != 1)
-	// // actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-	// // else
-	// // actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-	// // actionBar.setDisplayShowTitleEnabled(true);
-	// // actionBar.setTitle(mTitle);
-	// }
-
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		Log.i(TAG, "***999.onCreateOptionsMenu(Activity)");
 		if (!mLeftDrawerFragment_.isDrawerOpen()) {
-			// mCurrentContentFragment_.setupActionBar(menu);
 			boolean isUp = ((DIFragment) getTopFragment()).setupActionBar(menu);
 			setActBarHomeBtn(isUp);
 			return true;
@@ -239,7 +186,6 @@ public class MainActivity extends FragmentActivity implements
 
 		}
 
-		// getTopFragment();
 	}
 
 	@Override
